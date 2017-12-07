@@ -2,11 +2,13 @@
   "name": "react-lanes",
   "version": "0.0.1",
   "description": "",
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "babel src -d build",
-    "build:watch": "babel src -w -d build",
-    "prepublish": "npm run build"
+    "build": "NODE_ENV=production babel src -d dist",
+    "prepublish": "npm run build",
+    "predeploy": "NODE_ENV=production parcel build demo/index.html -d react-lanes --no-minify",
+    "demo": "NODE_ENV=development parcel demo/index.html -d react-lanes",
+    "deploy": "gh-pages -d react-lanes"
   },
   "repository": {
     "type": "git",
@@ -22,18 +24,13 @@
   "bugs": {
     "url": "https://github.com/carlbarrdahl/react-lanes/issues"
   },
-  "homepage": "https://github.com/carlbarrdahl/react-lanes#readme",
-  "devDependencies": {
+  "homepage": "https://github.com/carlbarrdahl/react-lanes",
+  "dependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-react-app": "^3.1.0",
+    "gh-pages": "^1.1.0",
+    "parcel-bundler": "^1.0.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
-  },
-  "dependencies": {
-    "@babel/core": "^7.0.0-beta.34",
-    "@babel/preset-env": "^7.0.0-beta.34"
   }
 }

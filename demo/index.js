@@ -1,12 +1,25 @@
-# react-lanes
+import React from "react"
+import ReactDOM from "react-dom"
+import Lanes from "../src"
 
-Trello-like lanes for React
+const styles = {
+  lanes: { display: "flex", fontFamily: "monospace" },
+  lane: { flex: 1, border: "1px solid #eee", padding: 10 },
+  todo: { border: "1px solid #ccc", padding: 10 }
+}
 
-### Demo
-`npm run demo` and open http://localhost:1234
+const TodoLanes = props => <div style={styles.lanes} {...props} />
+const Lane = ({ name, data, children }) => (
+  <div style={styles.lane}>
+    <h3>
+      {name} ({data.length})
+    </h3>
+    {children}
+  </div>
+)
 
-### Example
-```js
+const TodoItem = ({ name }) => <div style={styles.todo}>{name}</div>
+
 const laneConfig = {
   data: [
     {
@@ -27,7 +40,7 @@ const laneConfig = {
     {
       name: "Todo",
       query: {
-        filter: x => x.status === "TODO",
+        filter: x => x.status === "TODO"
       }
     },
     {
@@ -45,21 +58,19 @@ const laneConfig = {
       }
     }
   ],
-  component: Flex
+  component: TodoLanes
 }
-
-const TodoItem = ({ name }) => <div>{name}</div>
 
 ReactDOM.render(
   <Lanes
     {...laneConfig}
     render={lanes =>
-      lanes.map(lane => (
-        <Box>{lane.data.map(TodoItem)}</Box>
-      ))
+      lanes.map(lane => <Lane {...lane}>{lane.data.map(TodoItem)}</Lane>)
     }
   />,
   document.getElementById("root")
 )
 
-```
+if (module.hot) {
+  module.hot.accept()
+}
