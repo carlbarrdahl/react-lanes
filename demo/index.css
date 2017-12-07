@@ -1,0 +1,27 @@
+body {
+  background: #2C2E3E;
+  color: #F6F6F6;
+  font-family: monospace;
+}
+
+.todo-lanes {
+  display: flex;
+}
+
+
+.todo-lane {
+  flex: 1;
+  background: #34374C;
+  margin: 8px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  min-height: 300px;
+}
+
+.todo-item {
+  padding: 16px;
+  background: #F6F6F6;
+  color: #34374C;
+  border-radius: 8px;
+}
+

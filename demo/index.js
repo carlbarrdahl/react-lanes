@@ -1,24 +1,17 @@
+import "./index.css"
 import React from "react"
 import ReactDOM from "react-dom"
 import Lanes from "../src"
 
-const styles = {
-  lanes: { display: "flex", fontFamily: "monospace" },
-  lane: { flex: 1, border: "1px solid #eee", padding: 10 },
-  todo: { border: "1px solid #ccc", padding: 10 }
-}
-
-const TodoLanes = props => <div style={styles.lanes} {...props} />
+const TodoLanes = props => <div className="todo-lanes" {...props} />
 const Lane = ({ name, data, children }) => (
-  <div style={styles.lane}>
-    <h3>
-      {name} ({data.length})
-    </h3>
+  <div className="todo-lane">
+    <h3>{name} ({data.length})</h3>
     {children}
   </div>
 )
 
-const TodoItem = ({ name }) => <div style={styles.todo}>{name}</div>
+const TodoItem = ({ name }) => <div className="todo-item">{name}</div>
 
 const laneConfig = {
   data: [
