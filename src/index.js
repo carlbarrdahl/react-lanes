@@ -13,10 +13,10 @@ const Component = props =>
     ...props
   })
 
-const Lanes = ({ component = Component, data = [], lanes = [], render }) =>
+const Lanes = ({ component = Component, data = [], lanes = [], render, ...props }) =>
   createElement(
     component,
-    null,
+    props,
     render(lanes.map(lane => ({ ...lane, data: query(lane.query, data) })))
   )
 
